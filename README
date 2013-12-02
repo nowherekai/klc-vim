@@ -1,0 +1,8 @@
+My own .vim directory 
+
+install:
+1.clone the reo
+git clone https://github.com/nowherekai/klc-vim.git
+
+2.set up ~/.vimrc, have a fake .vimrc in your $HOME
+ ln -s ~/.vim/vimrc ~/.vimrc
