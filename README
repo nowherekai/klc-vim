@@ -6,3 +6,8 @@ git clone https://github.com/nowherekai/klc-vim.git
 
 2.set up ~/.vimrc, have a fake .vimrc in your $HOME
  ln -s ~/.vim/vimrc ~/.vimrc
+
+
+"a vim colorsheme i use is git@github.com:flazz/vim-colorschemes.git
+" it is too big that i set git to not include it
+

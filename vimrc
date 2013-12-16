@@ -24,14 +24,20 @@ if filereadable("/etc/vim/vimrc.local")
 endif
 set number
 set expandtab  "tab to spaces if want to insert tab use Ctrl-V<Tab> key sequence.
-set tabstop=4
+set tabstop=2
 if has('moues')
 	set mouse=a
 endif
 set selection=exclusive
 set selectmode=mouse,key
 "行间交错为4字节
-set shiftwidth=4
+set shiftwidth=2
+
+
+ " set different indent level for other languages
+autocmd FileType c setlocal shiftwidth=4 tabstop=4
+autocmd FileType cpp setlocal shiftwidth=4 tabstop=4
+
 
 set ruler
 set wrap
@@ -67,8 +73,7 @@ nmap <silent> <F2> 		 :noh<CR>
 imap <silent> <F2> <esc> :noh<CR>
 
 " paste model
-nmap <silent> <F4> 		 :set paste!<CR>
-imap <silent> <F4>      <esc> :set paste<CR>h
+set pastetoggle=<f4>
 
 
 "test----delete all space in the start of lines"
@@ -108,17 +113,23 @@ iab destory destroy
 
 " if has('autocmd')
 function! RemoveTrailingSpace()
-if $VIM_HATE_SPACE_ERRORS != '0' &&
-\(&filetype == 'c' || &filetype == 'cpp' || &filetype == 'vim')
-normal m`
-silent! :%s/\s\+$//e
-normal ``
-endif
+ if $VIM_HATE_SPACE_ERRORS != '0' &&
+ \(&filetype == 'c' || &filetype == 'cpp' || &filetype == 'vim')
+  normal m`
+  silent! :%s/\s\+$//e
+  normal ``
+ endif
 endfunction
+
+" function! RemoveTrailingSpace()
+"   normal m`
+"   silent! :%s/\s\+\$//e
+"   normal ``
+" endfunction
 
 " Highlight space errors in C/C++ source files (Vim tip #935)
 if $VIM_HATE_SPACE_ERRORS != '0'
-let c_space_errors=1
+  let c_space_errors=1
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -173,8 +184,13 @@ imap kk <ESC>
 nnoremap  ;   :
 
 "key mapping for the taglist.vim plugin
-nmap <F9>      :Tlist<CR>
-imap <F9> <C-O>:Tlist<CR>
+nmap <F8>      :Tlist<CR>
+imap <F8> <C-O>:Tlist<CR>
+
+
+" NerdTree
+nmap <F9>      :NERDTreeToggle<CR>
+imap <F9> <C-O>:NERDTreeToggle<CR>
 
 ",w to save
 nmap  ,w  :w<CR>
@@ -201,7 +217,6 @@ vmap <C-X>   "+y
 "pahogen init
 execute pathogen#infect()
 syntax on
-filetype plugin indent on
 
 
 
@@ -228,6 +243,16 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(log|jpg|png|jpeg)$',
   \ }
 
+""""""""""""""""""""""""""""""""""""""""
+"
+""       auto-save
+"
+"""""""""""""""""""""""""""""""""""""""""
+let g:auto_save = 1
+
+" now if you have spaces at end of lines, you get notified
+set list
+set listchars=trail:+
 
 """"""""""""""""""""""""""""""""""""""""
 "
@@ -238,6 +263,13 @@ set hidden "in order to switch between buffers with unsaved change
 map <s-tab> :bp<cr>
 map <tab> :bn<cr>
 map ,bd :bd<cr>
+
+""""""""""""""""""""""""""""""""""""""""
+"
+"             ack
+"
+""""""""""""""""""""""""""""""""""""""""
+map ,k :Ack <cword><ENTER>
 
 
 """"""""""""""""""""""""""""""
@@ -257,7 +289,3 @@ au BufEnter /usr/include/g++-3/*  setf cpp
 " Remove trailing spaces for C/C++ and Vim files
 au BufWritePre *                  call RemoveTrailingSpace()
 
-" set ruby and html file
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd Filetype html.erb setlocal ts=2 sts=2 sw=2
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
