@@ -1,4 +1,3 @@
-" """"""""""""""""""""""""""""""  origin my /etc/vimrc
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
 if has("autocmd")
@@ -14,9 +13,13 @@ endif
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
 set showcmd		" Show (partial) command in status line.
+set showmatch		" Show matching brackets.
 set ignorecase		" Do case insensitive matching
 set smartcase		" Do smart case matching
+set incsearch		" Incremental search
 set autowrite		" Automatically save before commands like :next and :make
+set hidden             " Hide buffers when they are abandoned
+set mouse=a		" Enable mouse usage (all modes)
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
@@ -64,18 +67,13 @@ imap    <silent> <C-l> <C-O>l
 
 "---------------键盘映射------------------"
 nmap <silent> <F2> 		 :noh<CR>
-imap <silent> <F2> <esc> :noh<CR>
-
-" paste model
-nmap <silent> <F4> 		 :set paste!<CR>
-imap <silent> <F4>      <esc> :set paste<CR>h
-
+imap <silent> <F2> <C-O> :noh<CR>
 
 "test----delete all space in the start of lines"
 nmap <silent> <F3> 		::%s/^\s\+//g<CR>
 
 "智能对齐
-"set smartindent
+set smartindent
 
 "自动缩进
 "set ai!
@@ -99,14 +97,14 @@ iab szie size
 iab slef self
 iab prinft printf
 iab infreface interface
-iab retrun return
-iab StdOUnt StdOut
+iab retrun return 
+iab StdOUnt StdOut 
 iab StdOunt StdOut
 iab incldue include
 iab inlcude include
 iab destory destroy
 
-" if has('autocmd')
+if has('autocmd')
 function! RemoveTrailingSpace()
 if $VIM_HATE_SPACE_ERRORS != '0' &&
 \(&filetype == 'c' || &filetype == 'cpp' || &filetype == 'vim')
@@ -120,9 +118,9 @@ endfunction
 if $VIM_HATE_SPACE_ERRORS != '0'
 let c_space_errors=1
 endif
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"""""""""""""""""""""my .vimrc"""""""""""""""""""""""""""""""""
+
+
 
 
 
@@ -156,9 +154,6 @@ set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\
 "   help path
 "
 set path+=/usr/include/c++/4.6
-set path+=/home/klc/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/1.9.1
-
-
 
 " setlocal means only to this fils
 map ,ss : setlocal spell!<cr>
@@ -211,23 +206,7 @@ filetype plugin indent on
 "
 """"""""""""""""""""""""""""""""
     "use ctrl-c to comment and uncomment
-map <C-c>  gcc<esc>
-
-
-""""""""""""""""""""""""""
-"
-"       ctrlp
-"
-""""""""""""""""""""""""""
-let g:ctrlp_map = ',,'
-let g:ctrlp_open_multiple_files = 'v'
-
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git)$',
-  \ 'file': '\v\.(log|jpg|png|jpeg)$',
-  \ }
-
+map <C-c>  gcc
 
 """"""""""""""""""""""""""""""""""""""""
 "
@@ -257,7 +236,9 @@ au BufEnter /usr/include/g++-3/*  setf cpp
 " Remove trailing spaces for C/C++ and Vim files
 au BufWritePre *                  call RemoveTrailingSpace()
 
-" set ruby and html file
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd Filetype html.erb setlocal ts=2 sts=2 sw=2
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+" ruby file shift 2 space
+if (&filetype == 'rb')
+    set shiftwidth=2
+    set tabstop=2
+endif
+
