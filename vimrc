@@ -178,8 +178,8 @@ ia myname <c-r>%<cr>
 
 "some map
 ";; to save file
-imap ,, <ESC>:w<CR>l
-imap kk <ESC>
+imap ,, <ESC>
+imap jj <ESC>
 "normal mode ; and : exchange
 nnoremap  ;   :
 
