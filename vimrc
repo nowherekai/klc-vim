@@ -16,7 +16,7 @@ endif
 set showcmd		" Show (partial) command in status line.
 set ignorecase		" Do case insensitive matching
 set smartcase		" Do smart case matching
-set autowrite		" Automatically save before commands like :next and :make
+" set autowrite		" Automatically save before commands like :next and :make
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
@@ -152,7 +152,7 @@ set dictionary+=/usr/share/dict/words
 "   Backspace to delete 4 space if have
 "
 """""""""""""""""""""""""""'
-set softtabstop=4
+set softtabstop=2
 
 """""""""""""""""""
 "
@@ -167,7 +167,7 @@ set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\
 "   help path
 "
 set path+=/usr/include/c++/4.6
-set path+=/home/klc/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/1.9.1
+set path+=/home/klc/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0
 
 
 
@@ -179,7 +179,7 @@ ia myname <c-r>%<cr>
 "some map
 ";; to save file
 imap ,, <ESC>
-imap jj <ESC>
+imap jj <ESC>l
 "normal mode ; and : exchange
 nnoremap  ;   :
 
