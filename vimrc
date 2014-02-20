@@ -121,6 +121,12 @@ function! RemoveTrailingSpace()
  endif
 endfunction
 
+" replace table by space
+function! ReplaceTableWithSpaceAndRemoveTrailingSpace()
+  silent! :%s /\t/  /g
+  silent! :%s/\s\+$//e
+endfunction
+
 " function! RemoveTrailingSpace()
 "   normal m`
 "   silent! :%s/\s\+\$//e
@@ -170,8 +176,22 @@ set path+=/usr/include/c++/4.6
 set path+=/home/klc/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0
 
 
+"""""""""""""set - not a a componment, the original value not include -,
+"    that i can search i-ma-hello,   most in css
+"
+"
+autocmd FileType css setlocal iskeyword=@,48-57,_,192-255,-,$
+autocmd FileType less setlocal iskeyword=@,48-57,_,192-255,-,$
+autocmd FileType html setlocal iskeyword=@,48-57,_,192-255,-,$
+autocmd FileType javascript setlocal iskeyword=@,48-57,_,192-255,-,$
 
-" setlocal means only to this fils
+
+""""""""""""  recongnize new file type
+au BufNewFile,BufRead *.less set filetype=less
+
+
+
+" setlocal means only to this file
 map ,ss : setlocal spell!<cr>
 filetype plugin on
 ia myname <c-r>%<cr>
@@ -200,6 +220,8 @@ map  ,f :quit!<CR>
 
 ",e open .vimrc file
 noremap ,e  <ESC>:e ~/.vim/vimrc<CR>
+",s open keyshorts 
+noremap ,s  <ESC>:e ~/NOTES/keyshorts.note<CR>
 " When vimrc is edited, reload it
 autocmd! bufwritepost vimrc source ~/.vim/vimrc
 

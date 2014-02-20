@@ -1,0 +1,286 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+nnoremap <buffer> <silent> g} :exe        "ptjump =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> } :exe          "ptag =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> g] :exe      "stselect =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> g :exe        "stjump =RubyCursorIdentifier()"
+nnoremap <buffer> <silent>  :exe v:count1."stag =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> ] :exe v:count1."stag =RubyCursorIdentifier()"
+nnoremap <buffer> <silent>  :exe  v:count1."tag =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> g] :exe       "tselect =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> g :exe         "tjump =RubyCursorIdentifier()"
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=RubyBalloonexpr()
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=:#
+setlocal commentstring=#\ %s
+setlocal complete=.,w,b,u,t
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'ruby'
+setlocal filetype=ruby
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=^\\s*\\<\\(load\\>\\|require\\>\\|autoload\\s*:\\=[\"']\\=\\h\\w*[\"']\\=,\\)
+setlocal includeexpr=substitute(substitute(v:fname,'::','/','g'),'$','.rb','')
+setlocal indentexpr=GetRubyIndent(v:lnum)
+setlocal indentkeys=0{,0},0),0],!^F,o,O,e,=end,=else,=elsif,=when,=ensure,=rescue,==begin,==end
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=ri
+setlocal linebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal nomodeline
+setlocal modifiable
+setlocal nrformats=hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=rubycomplete#Complete
+setlocal path=.,/usr/include,,,/usr/include/c++/4.6,~/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0,~/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/site_ruby/2.0.0,~/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/site_ruby/2.0.0/i686-linux,~/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/site_ruby,~/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/vendor_ruby/2.0.0,~/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/vendor_ruby/2.0.0/i686-linux,~/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/vendor_ruby,~/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0,~/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/i686-linux
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=2
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=.rb
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'ruby'
+setlocal syntax=ruby
+endif
+setlocal tabstop=2
+setlocal tags=./tags,./TAGS,tags,TAGS,~/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/site_ruby/2.0.0/tags,~/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/site_ruby/2.0.0/i686-linux/tags,~/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/site_ruby/tags,~/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/vendor_ruby/2.0.0/tags,~/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/vendor_ruby/2.0.0/i686-linux/tags,~/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/vendor_ruby/tags,~/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/tags,~/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/i686-linux/tags
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+1,1fold
+10,10fold
+19,19fold
+25,80fold
+87,113fold
+87,113fold
+87,113fold
+117,130fold
+117,130fold
+132,134fold
+139,142fold
+146,156fold
+159,170fold
+174,188fold
+194,198fold
+293,335fold
+343,347fold
+359,376fold
+387,402fold
+411,429fold
+411,429fold
+442,465fold
+531,534fold
+536,539fold
+137,542fold
+564,564fold
+564,766fold
+564,766fold
+779,785fold
+788,792fold
+788,792fold
+800,800fold
+794,816fold
+794,816fold
+794,816fold
+828,832fold
+836,839fold
+849,856fold
+861,864fold
+867,887fold
+899,914fold
+923,929fold
+933,941fold
+944,955fold
+963,975fold
+978,984fold
+978,992fold
+995,1022fold
+1025,1038fold
+1040,1043fold
+1046,1055fold
+1067,1082fold
+1085,1091fold
+1094,1100fold
+1104,1137fold
+1152,1157fold
+1160,1163fold
+1166,1169fold
+1172,1174fold
+1178,1207fold
+1210,1216fold
+1221,1224fold
+1229,1231fold
+1236,1238fold
+1241,1244fold
+1248,1250fold
+1252,1255fold
+1257,1259fold
+1261,1263fold
+1267,1273fold
+1286,1289fold
+1293,1300fold
+1319,1326fold
+1333,1349fold
+1354,1356fold
+1359,1361fold
+1369,1373fold
+1377,1383fold
+1403,1405fold
+1409,1411fold
+1416,1430fold
+1432,1445fold
+1448,1454fold
+1463,1472fold
+1476,1490fold
+1492,1500fold
+1506,1512fold
+1514,1527fold
+1529,1593fold
+1606,1627fold
+1639,1641fold
+1643,1650fold
+1660,1666fold
+1668,1676fold
+1678,1684fold
+1686,1695fold
+1697,1702fold
+1705,1712fold
+1715,1725fold
+1733,1733fold
+1733,1733fold
+1734,1746fold
+1734,1746fold
+1733,1750fold
+1752,1773fold
+1779,1820fold
+1822,1872fold
+769,1873fold
+1882,1894fold
+1899,1920fold
+1922,1943fold
+19
+normal! zo
+10
+normal! zo
+25
+normal! zo
+87
+normal! zo
+87
+normal! zo
+117
+normal! zo
+137
+normal! zo
+293
+normal! zo
+564
+normal! zo
+564
+normal! zo
+769
+normal! zo
+779
+normal! zo
+788
+normal! zo
+788
+normal! zo
+794
+normal! zo
+794
+normal! zo
+794
+normal! zo
+800
+normal! zo
+899
+normal! zo
+1067
+normal! zo
+1178
+normal! zo
+1697
+normal! zo
+1705
+normal! zo
+1733
+normal! zo
+1733
+normal! zo
+1733
+normal! zo
+1734
+normal! zo
+let s:l = 194 - ((49 * winheight(0) + 12) / 24)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+194
+normal! 01|
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :
