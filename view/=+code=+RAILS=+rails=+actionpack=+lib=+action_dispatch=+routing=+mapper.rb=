@@ -1,0 +1,428 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+nnoremap <buffer> <silent> g} :exe        "ptjump =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> } :exe          "ptag =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> g] :exe      "stselect =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> g :exe        "stjump =RubyCursorIdentifier()"
+nnoremap <buffer> <silent>  :exe v:count1."stag =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> ] :exe v:count1."stag =RubyCursorIdentifier()"
+nnoremap <buffer> <silent>  :exe  v:count1."tag =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> g] :exe       "tselect =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> g :exe         "tjump =RubyCursorIdentifier()"
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=RubyBalloonexpr()
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=:#
+setlocal commentstring=#\ %s
+setlocal complete=.,w,b,u,t
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'ruby'
+setlocal filetype=ruby
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=3
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=^\\s*\\<\\(load\\>\\|require\\>\\|autoload\\s*:\\=[\"']\\=\\h\\w*[\"']\\=,\\)
+setlocal includeexpr=substitute(substitute(v:fname,'::','/','g'),'$','.rb','')
+setlocal indentexpr=GetRubyIndent(v:lnum)
+setlocal indentkeys=0{,0},0),0],!^F,o,O,e,=end,=else,=elsif,=when,=ensure,=rescue,==begin,==end
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=ri
+setlocal linebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal nomodeline
+setlocal modifiable
+setlocal nrformats=hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=rubycomplete#Complete
+setlocal path=.,/usr/include,,,/usr/include/c++/4.6,~/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0,~/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/site_ruby/1.9.1,~/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/site_ruby/1.9.1/i686-linux,~/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/site_ruby,~/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/vendor_ruby/1.9.1,~/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/vendor_ruby/1.9.1/i686-linux,~/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/vendor_ruby,~/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/1.9.1,~/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/1.9.1/i686-linux
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=2
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=.rb
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'ruby'
+setlocal syntax=ruby
+endif
+setlocal tabstop=2
+setlocal tags=./tags,./TAGS,tags,TAGS,~/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/site_ruby/1.9.1/tags,~/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/site_ruby/1.9.1/i686-linux/tags,~/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/site_ruby/tags,~/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/vendor_ruby/1.9.1/tags,~/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/vendor_ruby/1.9.1/i686-linux/tags,~/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/vendor_ruby/tags,~/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/1.9.1/tags,~/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/1.9.1/i686-linux/tags
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+1,7fold
+1,8fold
+15,16fold
+15,16fold
+15,16fold
+15,16fold
+15,16fold
+15,16fold
+15,16fold
+15,16fold
+13,16fold
+21,21fold
+23,23fold
+20,24fold
+30,30fold
+38,38fold
+37,38fold
+34,39fold
+41,41fold
+45,45fold
+50,50fold
+49,51fold
+19,51fold
+62,69fold
+73,73fold
+83,83fold
+85,85fold
+79,86fold
+90,90fold
+94,94fold
+104,104fold
+108,114fold
+98,117fold
+122,124fold
+128,128fold
+130,130fold
+132,132fold
+121,133fold
+138,138fold
+142,142fold
+137,143fold
+152,152fold
+151,153fold
+159,159fold
+158,160fold
+157,161fold
+165,165fold
+167,167fold
+147,168fold
+176,176fold
+175,177fold
+183,183fold
+182,184fold
+192,195fold
+192,195fold
+192,195fold
+191,196fold
+200,200fold
+172,201fold
+205,205fold
+210,210fold
+213,213fold
+215,215fold
+223,223fold
+225,225fold
+222,226fold
+230,230fold
+237,238fold
+242,243fold
+247,249fold
+212,255fold
+209,256fold
+261,261fold
+263,263fold
+260,264fold
+272,272fold
+269,275fold
+268,276fold
+280,280fold
+284,284fold
+288,288fold
+292,292fold
+296,296fold
+300,300fold
+304,304fold
+308,308fold
+78,309fold
+55,309fold
+316,318fold
+322,322fold
+340,340fold
+496,496fold
+499,499fold
+498,504fold
+495,516fold
+520,520fold
+526,526fold
+525,527fold
+532,532fold
+540,540fold
+542,543fold
+537,544fold
+555,555fold
+559,562fold
+554,563fold
+548,564fold
+536,565fold
+339,565fold
+574,574fold
+582,582fold
+590,590fold
+598,598fold
+606,606fold
+611,614fold
+610,615fold
+573,615fold
+711,711fold
+716,716fold
+715,719fold
+721,721fold
+726,726fold
+728,728fold
+730,730fold
+734,735fold
+725,736fold
+704,740fold
+742,742fold
+751,752fold
+796,796fold
+796,796fold
+796,796fold
+796,796fold
+796,796fold
+796,796fold
+794,797fold
+856,856fold
+865,865fold
+870,870fold
+874,874fold
+878,878fold
+882,882fold
+886,886fold
+890,890fold
+894,894fold
+898,898fold
+902,902fold
+906,906fold
+910,912fold
+916,916fold
+920,920fold
+924,924fold
+869,925fold
+703,925fold
+980,985fold
+989,989fold
+994,994fold
+996,996fold
+998,998fold
+993,999fold
+1003,1003fold
+1007,1007fold
+1011,1011fold
+1019,1019fold
+1023,1023fold
+1029,1029fold
+1035,1035fold
+1039,1039fold
+1043,1043fold
+977,1044fold
+1050,1053fold
+1057,1057fold
+1061,1061fold
+1065,1065fold
+1049,1072fold
+1076,1076fold
+1104,1104fold
+1113,1113fold
+1117,1117fold
+1108,1120fold
+1101,1123fold
+1262,1262fold
+1271,1272fold
+1276,1276fold
+1266,1279fold
+1259,1282fold
+1299,1299fold
+1304,1304fold
+1303,1305fold
+1298,1306fold
+1322,1322fold
+1327,1327fold
+1326,1328fold
+1321,1329fold
+1334,1334fold
+1339,1339fold
+1338,1340fold
+1333,1341fold
+1346,1346fold
+1353,1353fold
+1356,1356fold
+1355,1357fold
+1352,1358fold
+1351,1359fold
+1361,1361fold
+1350,1362fold
+1345,1363fold
+1369,1369fold
+1371,1371fold
+1368,1372fold
+1377,1377fold
+1376,1378fold
+1382,1382fold
+1390,1394fold
+1396,1397fold
+1403,1403fold
+1407,1407fold
+1416,1417fold
+1411,1420fold
+1389,1422fold
+1426,1426fold
+1431,1431fold
+1435,1435fold
+1437,1437fold
+1439,1439fold
+1433,1440fold
+1430,1441fold
+1449,1449fold
+1451,1451fold
+1455,1455fold
+1457,1457fold
+1445,1462fold
+1467,1467fold
+1469,1469fold
+1471,1471fold
+1477,1477fold
+1476,1478fold
+1475,1479fold
+1481,1481fold
+1466,1482fold
+1488,1488fold
+1493,1494fold
+1499,1499fold
+1498,1501fold
+1505,1506fold
+1510,1510fold
+1516,1516fold
+1515,1518fold
+1522,1522fold
+1492,1525fold
+1529,1529fold
+1533,1533fold
+1537,1537fold
+1541,1541fold
+1545,1545fold
+1554,1554fold
+1550,1555fold
+1557,1557fold
+1549,1558fold
+1562,1564fold
+1566,1567fold
+1573,1573fold
+1572,1574fold
+1571,1575fold
+1581,1581fold
+1579,1584fold
+1588,1588fold
+1592,1592fold
+1596,1596fold
+1600,1600fold
+1605,1605fold
+1608,1608fold
+1610,1610fold
+1604,1611fold
+1615,1616fold
+1621,1621fold
+1623,1623fold
+1620,1625fold
+1634,1637fold
+1642,1642fold
+1644,1644fold
+1646,1646fold
+1648,1648fold
+1650,1650fold
+1652,1652fold
+1660,1660fold
+1662,1662fold
+1659,1663fold
+1629,1664fold
+1672,1673fold
+1669,1675fold
+1668,1676fold
+1487,1677fold
+970,1677fold
+1758,1759fold
+1777,1777fold
+1779,1779fold
+1776,1780fold
+1774,1781fold
+1757,1782fold
+1786,1788fold
+13,1796fold
+12,1797fold
+11,1798fold
+1
+normal! zo
+1
+normal! zc
+let s:l = 1 - ((0 * winheight(0) + 12) / 24)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :
