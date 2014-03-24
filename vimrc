@@ -14,7 +14,7 @@ endif
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
 set showcmd		" Show (partial) command in status line.
-" set ignorecase		" Do case insensitive matching
+set ignorecase		" Do case insensitive matching
 set smartcase		" Do smart case matching
 " set autowrite		" Automatically save before commands like :next and :make
 
@@ -220,13 +220,13 @@ map  ,f :quit!<CR>
 
 ",e open .vimrc file
 noremap ,e  <ESC>:e ~/.vim/vimrc<CR>
-",s open keyshorts 
+",s open keyshorts
 noremap ,s  <ESC>:e ~/NOTES/keyshorts.note<CR>
 " When vimrc is edited, reload it
 autocmd! bufwritepost vimrc source ~/.vim/vimrc
 
 ",c open c.snippet
-noremap ,c <ESC>:e ~/.vim/bundle/snipmate/snippets/c.snippets<CR>
+" noremap ,c <ESC>:e ~/.vim/bundle/snipmate/snippets/c.snippets<CR>
 
 """"""""""""""""""""
 "
@@ -311,3 +311,9 @@ au BufEnter /usr/include/g++-3/*  setf cpp
 " Remove trailing spaces for C/C++ and Vim files
 au BufWritePre *                  call RemoveTrailingSpace()
 
+
+" slime of lisp
+let g:slime_target = "tmux"
+let g:slimv_swank_cmd = '! xterm -e sbcl --load ~/.vim/slime/start-swank.lisp &'
+let g:paredit_mode=0
+let g:lisp_rainbow=1
