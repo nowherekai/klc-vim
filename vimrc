@@ -77,7 +77,7 @@ set pastetoggle=<f4>
 
 
 "test----delete all space in the start of lines"
-nmap <silent> <F3> 		::%s/^\s\+//g<CR>
+nmap <silent> <F3> 		:call RemoveTrailingSpace()<CR>
 
 "智能对齐
 "set smartindent
@@ -113,8 +113,7 @@ iab destory destroy
 
 " if has('autocmd')
 function! RemoveTrailingSpace()
- if $VIM_HATE_SPACE_ERRORS != '0' &&
- \(&filetype == 'c' || &filetype == 'cpp' || &filetype == 'vim')
+ if $VIM_HATE_SPACE_ERRORS != '0'
   normal m`
   silent! :%s/\s\+$//e
   normal ``
@@ -181,9 +180,12 @@ set path+=/home/klc/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0
 "
 "
 autocmd FileType css setlocal iskeyword=@,48-57,_,192-255,-,$
+autocmd FileType scss setlocal iskeyword=@,48-57,_,192-255,-,$
 autocmd FileType less setlocal iskeyword=@,48-57,_,192-255,-,$
 autocmd FileType html setlocal iskeyword=@,48-57,_,192-255,-,$
+autocmd FileType slim setlocal iskeyword=@,48-57,_,192-255,-,$
 autocmd FileType javascript setlocal iskeyword=@,48-57,_,192-255,-,$
+autocmd FileType lisp setlocal iskeyword=33,36,38,42,43,45,47-58,60-62,63,64-90,97-122,_
 
 
 """"""""""""  recongnize new file type
@@ -193,6 +195,8 @@ au BufNewFile,BufRead *.less set filetype=less
 
 " setlocal means only to this file
 map ,ss : setlocal spell!<cr>
+map ,ig: setlocal ignorecase!<cr>
+
 filetype plugin on
 ia myname <c-r>%<cr>
 
@@ -314,6 +318,8 @@ au BufWritePre *                  call RemoveTrailingSpace()
 
 " slime of lisp
 let g:slime_target = "tmux"
-let g:slimv_swank_cmd = '! xterm -e sbcl --load ~/.vim/slime/start-swank.lisp &'
+" let g:slimv_swank_cmd = '! xterm -e sbcl --load ~/.vim/slime/start-swank.lisp &'
 let g:paredit_mode=0
 let g:lisp_rainbow=1
+autocmd FileType lisp setlocal iskeyword=33,36,38,42,43,45,47-58,60-62,63,64-90,97-122,_,-
+" autocmd FileType ruby setlocal iskeyword=33,36,38,42,43,45,47-58,60-62,63,64-90,97-122,_
