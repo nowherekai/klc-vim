@@ -323,3 +323,6 @@ let g:paredit_mode=0
 let g:lisp_rainbow=1
 autocmd FileType lisp setlocal iskeyword=33,36,38,42,43,45,47-58,60-62,63,64-90,97-122,_,-
 " autocmd FileType ruby setlocal iskeyword=33,36,38,42,43,45,47-58,60-62,63,64-90,97-122,_
+
+"git commit message
+autocmd Filetype gitcommit setlocal spell textwidth=72
