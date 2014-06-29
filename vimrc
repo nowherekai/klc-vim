@@ -326,3 +326,6 @@ autocmd FileType lisp setlocal iskeyword=33,36,38,42,43,45,47-58,60-62,63,64-90,
 
 "git commit message
 autocmd Filetype gitcommit setlocal spell textwidth=72
+
+"go
+let g:go_disable_autoinstall = 1
