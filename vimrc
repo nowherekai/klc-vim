@@ -329,3 +329,9 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 
 "go
 let g:go_disable_autoinstall = 1
+autocmd FileType go setlocal expandtab shiftwidth=2 tabstop=2
+let g:go_snippet_engine = "neosnippet"
+
+
+"molokai color scheme
+" let g:molokai_original = 1
