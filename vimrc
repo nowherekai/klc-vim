@@ -335,3 +335,6 @@ let g:go_snippet_engine = "neosnippet"
 
 "molokai color scheme
 " let g:molokai_original = 1
+
+"markdown
+let g:vim_markdown_folding_disabled=1
