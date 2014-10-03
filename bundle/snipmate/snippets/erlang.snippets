@@ -1,0 +1,53 @@
+snippet mod
+	-module(${1:`Filename()`}).
+	${2}
+snippet exp
+	-export([${1}]).
+	${2}
+snippet expg
+	-export([init/1, handle_call/3, handle_cast/2, handle_info/2,
+	                 terminate/2, code_change/3]).
+	${1}
+snippet imp
+	-import(${1}, [${2}]).
+	${3}
+snippet def
+	-define(${1}, ${2}).
+	${3}
+snippet ift
+	io:format("${1}", [${2}])${3}
+snippet loo
+	loop(${1}) ->
+		receive
+			${2}
+		after ${3:Delay} ->
+			${4}
+		end.
+	${5}
+snippet rec receive end
+	receive
+		${1}
+	end.${2}
+snippet rec receive..after
+	receive
+		${1}
+	after
+		${2} -> ${3}
+	end.${4}
+snippet cas
+	case ${1} of
+		${2} ->
+			${3}
+	end.
+snippet cmp
+	-compile(${1:export_all}).
+	${2}
+snippet beh gen_server
+	-behaviour(gen_server).
+	${1}
+snippet beh application
+	-behaviour(application).
+	{1}
+snippet beh supervisor
+	-behaviour(supervisor).
+	${1}
