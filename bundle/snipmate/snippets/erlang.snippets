@@ -34,6 +34,9 @@ snippet rec receive..after
 	after
 		${2} -> ${3}
 	end.${4}
+snippet recd
+	-record(${1:state}, {${2}}).
+	${3}
 snippet cas
 	case ${1} of
 		${2} ->
@@ -47,7 +50,9 @@ snippet beh gen_server
 	${1}
 snippet beh application
 	-behaviour(application).
-	{1}
+	${1}
 snippet beh supervisor
 	-behaviour(supervisor).
 	${1}
+snippet err
+	error_logger:error_msg("${1}"),${2}
