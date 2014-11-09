@@ -204,10 +204,10 @@ noremap ,ig: setlocal ignorecase!<cr>
 filetype plugin on
 ia myname <c-r>%<cr>
 
-"some map
-";; to save file
+"some map to sec
+" also have <c-c> <c-[>,  把capslock 改为ctrl 也可接受。
 inoremap ,, <ESC>
-inoremap jj <ESC>l
+inoremap jk <ESC>l
 "normal mode ; and : exchange
 " nnoremap  ;   :
 
@@ -378,5 +378,10 @@ noremap \ ,
 
 noremap  <leader>f :quit!<CR>
 noremap <Space> :
+
+" ," 加上双引号， 比vim-surround 更方便点， 加上引号用到的较多。
+" vim-surround 用法: ysiw"
+nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+
 
 
