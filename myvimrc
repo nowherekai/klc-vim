@@ -1,4 +1,6 @@
-" """"""""""""""""""""""""""""""  origin my /etc/vimrc
+"map , 为leader key
+let mapleader=","
+
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
 if has("autocmd")
@@ -13,10 +15,10 @@ endif
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
-set showcmd		" Show (partial) command in status line.
-set ignorecase		" Do case insensitive matching
-set smartcase		" Do smart case matching
-" set autowrite		" Automatically save before commands like :next and :make
+set showcmd    " Show (partial) command in status line.
+set ignorecase    " Do case insensitive matching
+set smartcase    " Do smart case matching
+" set autowrite    " Automatically save before commands like :next and :make
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
@@ -26,7 +28,7 @@ set number
 set expandtab  "tab to spaces if want to insert tab use Ctrl-V<Tab> key sequence.
 set tabstop=2
 if has('moues')
-	set mouse=a
+  set mouse=a
 endif
 set selection=exclusive
 set selectmode=mouse,key
@@ -51,9 +53,9 @@ set showmatch
 "设置状态栏
 "set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,    %c%V%)\ %P
 if has('multi_byte') && v:version > 601
-	if v:lang =~? '^\(zh\)\|\(ja\)\|\(ko\)'
-    	set ambiwidth=double
-	endif
+  if v:lang =~? '^\(zh\)\|\(ja\)\|\(ko\)'
+      set ambiwidth=double
+  endif
 endif
 
 " key mapping to erase browing long lines
@@ -69,15 +71,17 @@ imap    <silent> <C-h> <C-O>h
 imap    <silent> <C-l> <C-O>l
 
 "---------------键盘映射------------------"
-nmap <silent> <F2> 		 :noh<CR>
+nmap <silent> <F2>      :noh<CR>
 imap <silent> <F2> <esc> :noh<CR>
 
 " paste model
 set pastetoggle=<f4>
 
+nnoremap ,l :set number! <CR>
+
 
 "test----delete all space in the start of lines"
-nmap <silent> <F3> 		:call RemoveTrailingSpace()<CR>
+nnoremap <silent> <F3>     :call RemoveTrailingSpace()<CR>
 
 "智能对齐
 "set smartindent
@@ -194,38 +198,38 @@ au BufNewFile,BufRead *.less set filetype=less
 
 
 " setlocal means only to this file
-map ,ss : setlocal spell!<cr>
-map ,ig: setlocal ignorecase!<cr>
+noremap ,ss : setlocal spell!<cr>
+noremap ,ig: setlocal ignorecase!<cr>
 
 filetype plugin on
 ia myname <c-r>%<cr>
 
 "some map
 ";; to save file
-imap ,, <ESC>
-imap jj <ESC>l
+inoremap ,, <ESC>
+inoremap jj <ESC>l
 "normal mode ; and : exchange
-nnoremap  ;   :
+" nnoremap  ;   :
 
 "key mapping for the taglist.vim plugin
-nmap <F8>      :Tlist<CR>
-imap <F8> <C-O>:Tlist<CR>
+nnoremap <F8>      :Tlist<CR>
+inoremap <F8> <C-O>:Tlist<CR>
 
 
 " NerdTree
-nmap <F9>      :NERDTreeToggle<CR>
-imap <F9> <C-O>:NERDTreeToggle<CR>
+nnoremap <F9>      :NERDTreeToggle<CR>
+inoremap <F9> <C-O>:NERDTreeToggle<CR>
 
 ",w to save
-nmap  ,w  :w<CR>
+nnoremap  ,w  :w<CR>
 
 ",f to quit!
-map  ,f :quit!<CR>
+" map  ,f :quit!<CR>
 
 ",e open .vimrc file
-noremap ,e  <ESC>:e ~/.vim/vimrc<CR>
-",s open keyshorts
-noremap ,s  <ESC>:e ~/NOTES/keyshorts.note<CR>
+noremap <leader>e  <ESC>:e $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
 " When vimrc is edited, reload it
 autocmd! bufwritepost vimrc source ~/.vim/vimrc
 
@@ -235,10 +239,12 @@ autocmd! bufwritepost vimrc source ~/.vim/vimrc
 """"""""""""""""""""
 "
 "   visual mode copy to the + register
-"   the + * register is relative to the X's clipboard
+"   the + * register is relative to the X's clipboard (only for x11)
 "
 """"""""""""""""""""""
-vmap <C-X>   "+y
+vnoremap <C-X>   "+y
+
+
 
 "pahogen init
 execute pathogen#infect()
@@ -252,7 +258,7 @@ syntax on
 "
 """"""""""""""""""""""""""""""""
     "use ctrl-c to comment and uncomment
-map <C-c>  gcc<esc>
+noremap <C-c>  gcc<esc>
 
 
 """"""""""""""""""""""""""
@@ -286,16 +292,16 @@ set listchars=trail:+
 "
 """""""""""""""""""""""""""""""""""""""""
 set hidden "in order to switch between buffers with unsaved change
-map <s-tab> :bp<cr>
-map <tab> :bn<cr>
-map ,bd :bd<cr>
+noremap <s-tab> :bp<cr>
+noremap <tab> :bn<cr>
+noremap ,bd :bd<cr>
 
 """"""""""""""""""""""""""""""""""""""""
 "
 "             ack
 "
 """"""""""""""""""""""""""""""""""""""""
-map ,k :Ack <cword><ENTER>
+nnoremap ,k :Ack <cword><ENTER>
 
 
 """"""""""""""""""""""""""""""
@@ -319,6 +325,9 @@ au BufWritePre *                  call RemoveTrailingSpace()
 " slime of lisp
 let g:slime_target = "tmux"
 " let g:slimv_swank_cmd = '! xterm -e sbcl --load ~/.vim/slime/start-swank.lisp &'
+"
+" let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp\""'
+
 let g:paredit_mode=0
 let g:lisp_rainbow=1
 autocmd FileType lisp setlocal iskeyword=33,36,38,42,43,45,47-58,60-62,63,64-90,97-122,_,-
@@ -335,6 +344,40 @@ let g:go_snippet_engine = "neosnippet"
 
 "molokai color scheme
 " let g:molokai_original = 1
+"
+
+" solarized options
+" let g:solarized_visibility = "high"
+" let g:solarized_contrast = "high"
+" if has('gui_running')
+"   set background=light
+" else
+"   set background=dark
+" endif
+" colorscheme solarized
+"
+colorscheme desert
+
+" set foldmethod=syntax
+
+" let g:NERDTreeDirArrows=0
+"
 
 "markdown
 let g:vim_markdown_folding_disabled=1
+
+
+"added by mac and should add to .vimrc in git rep
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
+
+" map \ 为 ,, this for 方向查抄功能（用;查找下一个，\则返回上个查找"map
+noremap \ ,
+
+
+noremap  <leader>f :quit!<CR>
+noremap <Space> :
+
+
+
