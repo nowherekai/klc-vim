@@ -17,5 +17,5 @@ syntax keyword potionKeyword class return
 "function
 syntax keyword potionFunction print join string
 
-highlight link potionKeyWord Keyword
+highlight link potionKeyWord KeyWord
 highlight link potionFunction Function
