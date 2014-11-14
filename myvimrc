@@ -36,7 +36,7 @@ set selectmode=mouse,key
 set shiftwidth=2
 
 
- " set different indent level for other languages
+" set different indent level for other languages
 autocmd FileType c setlocal shiftwidth=4 tabstop=4
 autocmd FileType cpp setlocal shiftwidth=4 tabstop=4
 
@@ -257,8 +257,8 @@ syntax on
 "   tcomment
 "
 """"""""""""""""""""""""""""""""
-    "use ctrl-c to comment and uncomment
-noremap <C-c>  gcc<esc>
+"use ctrl-c to comment and uncomment
+map <C-c>  gcc<esc>
 
 
 """"""""""""""""""""""""""
