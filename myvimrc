@@ -80,10 +80,10 @@ endif
 syntax enable
 
 " mac 配合monokai 使用，  ubuntu直接使用就行
-" try
-"   colorscheme desert
-" catch
-" endtry
+try
+  colorscheme desert
+catch
+endtry
 
 "molokai color scheme
 " let g:molokai_original = 1
@@ -98,13 +98,15 @@ syntax enable
 
 
 """""""" peaksea
-if ! has("gui_running")
-  set t_Co=256
-endif
-" feel free to choose :set background=light for a different style
-set background=dark
-colors peaksea
+" if ! has("gui_running")
+"   set t_Co=256
+" endif
+" " feel free to choose :set background=light for a different style
+" set background=dark
+" colors peaksea
 " """"""""""""""""
+" autocmd FileType clojure colors peaksea
+" autocmd FileType clojure set background=dark
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
