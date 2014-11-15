@@ -15,7 +15,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" " Sets how many lines of history VIM has to remember
+"Sets how many lines of history VIM has to remember
  set history=5000
 
 "map , 为leader key
@@ -26,9 +26,6 @@ let g:mapleader = ","
 if has("autocmd")
   filetype plugin indent on
 endif
-
-" innorecase
-set ic
 
 """"""""""""""""""""""""""""""""""""
 " Vim user interface
@@ -66,10 +63,10 @@ set hlsearch
 "随输入增量搜索
 set incsearch
 
-" " Add a bit extra margin to the left
- " set foldcolumn=1
+" Add a bit extra margin to the left
+" set foldcolumn=1
 
-"设置状态栏
+""?
 if has('multi_byte') && v:version > 601
   if v:lang =~? '^\(zh\)\|\(ja\)\|\(ko\)'
       set ambiwidth=double
@@ -82,14 +79,16 @@ endif
 " " Enable syntax highlighting
 syntax enable
 
-try
-  colorscheme desert
-catch
-endtry
+" mac 配合monokai 使用，  ubuntu直接使用就行
+" try
+"   colorscheme desert
+" catch
+" endtry
 
 "molokai color scheme
 " let g:molokai_original = 1
-"
+
+"solarized
 " if has('gui_running')
 "   set background=light
 " else
@@ -97,11 +96,20 @@ endtry
 " endif
 " colorscheme solarized
 
+
+"""""""" peaksea
+if ! has("gui_running")
+  set t_Co=256
+endif
+" feel free to choose :set background=light for a different style
+set background=dark
+colors peaksea
+" """"""""""""""""
+
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 " " Use Unix as the standard file type
 set ffs=unix,dos,mac
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -111,12 +119,11 @@ set nobackup
 set nowb
 set noswapfile
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs
-set expandtab  "tab to spaces if want to insert tab use Ctrl-V<Tab> key sequence.
+set expandtab  "tab to spaces if want to insert tab use Ctrl-V<C-I> key sequence.
 
 " Be smart when using tabs ;)
 set smarttab
@@ -234,7 +241,7 @@ function! ReplaceTableWithSpaceAndRemoveTrailingSpace()
 endfunction
 nnoremap <silent> <leader><space>     :call ReplaceTableWithSpaceAndRemoveTrailingSpace()<CR>
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
-autocmd BufWrite *.py :call RemoveTrailingSpace()
+autocmd BufWrite * :call RemoveTrailingSpace()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ack searching and cope displaying
@@ -384,6 +391,8 @@ let g:slime_target = "tmux"
 "
 " let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp\""'
 
+let g:slimv_swank_clojure = '! xterm -e lein swank &'
+
 let g:paredit_mode=0
 let g:lisp_rainbow=1
 autocmd FileType lisp setlocal iskeyword=33,36,38,42,43,45,47-58,60-62,63,64-90,97-122,_,-
@@ -478,4 +487,3 @@ function! <SID>BufcloseCloseIt()
 endfunction
 
 " Exercises
-"
