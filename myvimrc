@@ -1,0 +1,482 @@
+"inspired by pracital vim, learn vimscript the hard way and   Amir Salihefendic(https://github.com/amix/vimrc)
+" Sections:
+"     -> General
+"     -> VIM user interface
+"     -> Colors and Fonts
+"     -> Files and backups
+"     -> Text, tab and indent related
+"     -> Visual mode related
+"     -> Moving around, tabs and buffers
+"     -> Status line
+"     -> Editing mappings
+"     -> vimgrep searching and cope displaying
+"     -> Spell checking
+"     -> Helper functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " Sets how many lines of history VIM has to remember
+ set history=5000
+
+"map , 为leader key
+let mapleader=","
+let g:mapleader = ","
+
+" Vim load indentation rules and plugins according to the detected filetype.
+if has("autocmd")
+  filetype plugin indent on
+endif
+
+" innorecase
+set ic
+
+""""""""""""""""""""""""""""""""""""
+" Vim user interface
+"""""""""""""""""""""""""""
+" set 7 line to the cursor, so when you curson is up the bottom line 7 lines vim will auto scroll
+set so=7
+
+" Ignore compiled files, :h wildignore
+set wildignore=*.o,*~,*.pyc
+set wildignore+=.git\*,.hg\*,.svn\*
+
+" The following are commented out as they cause vim to behave a lot
+" differently from regular Vi. They are highly recommended though.
+set showcmd    "Show (partial) command in status line.
+set ignorecase    "Do case insensitive matching
+set smartcase    "Do smart case matching
+
+set number
+" a buffer is hidden when is abandoned
+set hid
+
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+
+"?
+set t_vb=
+"?
+set tm=500
+
+set ruler
+
+"搜索设置
+set hlsearch
+"随输入增量搜索
+set incsearch
+
+" " Add a bit extra margin to the left
+ " set foldcolumn=1
+
+"设置状态栏
+if has('multi_byte') && v:version > 601
+  if v:lang =~? '^\(zh\)\|\(ja\)\|\(ko\)'
+      set ambiwidth=double
+  endif
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors and Fonts
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " Enable syntax highlighting
+syntax enable
+
+try
+  colorscheme desert
+catch
+endtry
+
+"molokai color scheme
+" let g:molokai_original = 1
+"
+" if has('gui_running')
+"   set background=light
+" else
+"   set background=dark
+" endif
+" colorscheme solarized
+
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+" " Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Files, backups and undo
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use spaces instead of tabs
+set expandtab  "tab to spaces if want to insert tab use Ctrl-V<Tab> key sequence.
+
+" Be smart when using tabs ;)
+set smarttab
+set tabstop=2
+
+"行间交错为2字节
+set shiftwidth=2
+
+if has('moues')
+  set mouse=a
+endif
+
+set selection=exclusive
+set selectmode=mouse,key
+
+set wrap
+set linebreak
+set tw=500
+
+"智能对齐
+set smartindent
+"在输入括号时光标会短暂的跳到与之匹配的括号处 不影响输入
+set showmatch
+"自动对齐
+set autoindent
+
+ " set different indent level for other languages
+autocmd FileType c setlocal shiftwidth=4 tabstop=4
+autocmd FileType cpp setlocal shiftwidth=4 tabstop=4
+
+""""""""""""""""""""""""""""""
+" => Visual mode related
+" """"""""""""""""""""""""""""""
+" " Visual mode pressing * or # searches for the current selection
+" " Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :call VisualSelection('f', '')<CR>
+vnoremap <silent> # :call VisualSelection('b', '')<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Moving around, tabs, windows and buffers
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Treat long lines as break lines (useful when moving around in them)  key mapping to erase browing long lines
+noremap  j gj
+noremap  k gk
+noremap  <Down> gj
+noremap  <Up> gk
+
+imap  <silent> <C-J> <C-O>j
+imap  <silent> <C-k> <C-O>k
+imap  <silent> <C-h> <C-O>h
+imap  <silent> <C-l> <C-O>l
+
+" Smart way to move between windows. cool!
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+""""""""""""""""""""""""""""""""""""""""
+""             buffers
+"""""""""""""""""""""""""""""""""""""""""
+set hidden "in order to switch between buffers with unsaved change
+noremap <s-tab> :bp<cr>
+noremap <tab> :bn<cr>
+noremap ,bd :bd<cr>
+
+" Vim jump to the last position when reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+" Remember info about open buffers on close
+set viminfo^=%
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Editing mappings
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"---------------键盘映射------------------"
+" Remap VIM 0 to first non-blank character
+noremap 0 ^
+nmap <silent> <F2>      :noh<CR>
+imap <silent> <F2> <esc> :noh<CR>
+
+" paste model
+set pastetoggle=<f4>
+
+nnoremap ,l :set number! <CR>
+" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+" not work on mac ??
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+if has("mac") || has("macunix")
+  nmap <D-j> <M-j>
+  nmap <D-k> <M-k>
+  vmap <D-j> <M-j>
+  vmap <D-k> <M-k>
+endif
+
+"delete all space in the start of lines"
+function! RemoveTrailingSpace()
+ if $VIM_HATE_SPACE_ERRORS != '0'
+  normal m`
+  silent! :%s/\s\+$//ge
+  normal ``
+ endif
+endfunction
+" replace table by space
+function! ReplaceTableWithSpaceAndRemoveTrailingSpace()
+  normal m`
+  silent! :%s /\t/  /g
+  silent! :%s/\s\+$//e
+  normal ``
+endfunction
+nnoremap <silent> <leader><space>     :call ReplaceTableWithSpaceAndRemoveTrailingSpace()<CR>
+" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+autocmd BufWrite *.py :call RemoveTrailingSpace()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Ack searching and cope displaying
+" "    requires ack.vim - it's much better than vimgrep/grep
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap ,g :Ack <cword><CR>
+
+" When you press gv you Ack after the selected text
+vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
+
+" When you press <leader>r you can search and replace the selected text
+vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
+
+" Do :help cope if you are unsure what cope is. It's super useful!
+"
+" When you search with Ack, display your results in cope by doing:
+"   <leader>cc
+"
+" To go to the next search result do:
+"   <leader>n
+"
+" To go to the previous search results do:
+"   <leader>p
+"
+map <leader>cc :cope<cr>
+map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
+map <leader>n :cn<cr>
+map <leader>p :cp<cr>
+
+"允许backspace和光标跨越行边界
+set whichwrap+=<,>,h,l
+" set fileencodings = utf-8, gbk
+set ambiwidth=double
+
+"自动纠错“
+iab szie size
+iab slef self
+iab prinft printf
+iab infreface interface
+iab retrun return
+iab StdOUnt StdOut
+iab StdOunt StdOut
+iab incldue include
+iab inlcude include
+iab destory destroy
+
+" Highlight space errors in C/C++ source files (Vim tip #935)
+if $VIM_HATE_SPACE_ERRORS != '0'
+  let c_space_errors=1
+endif
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""
+"   Backspace to delete 4 space if have
+"""""""""""""""""""""""""""'
+set softtabstop=2
+
+"""""""""""""""""""
+"   set statusline to show the decode infomation
+"   see h statusline
+set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+
+"""""""""""""""
+"   help path
+" set path+=/home/klc/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0
+
+"""""""""""""set - not a a componment, the original value not include -,
+"    that i can search i-ma-hello,   most in css
+autocmd FileType css setlocal iskeyword=@,48-57,_,192-255,-,$
+autocmd FileType scss setlocal iskeyword=@,48-57,_,192-255,-,$
+autocmd FileType less setlocal iskeyword=@,48-57,_,192-255,-,$
+autocmd FileType html setlocal iskeyword=@,48-57,_,192-255,-,$
+autocmd FileType slim setlocal iskeyword=@,48-57,_,192-255,-,$
+autocmd FileType javascript setlocal iskeyword=@,48-57,_,192-255,-,$
+autocmd FileType lisp setlocal iskeyword=33,36,38,42,43,45,47-58,60-62,63,64-90,97-122,_
+
+
+""""""""""""  recongnize new file type
+au BufNewFile,BufRead *.less set filetype=less
+
+" setlocal means only to this file
+noremap ,ss : setlocal spell!<cr>
+noremap ,ig: setlocal ignorecase!<cr>
+
+" also have <c-c> <c-[>,  把capslock 改为ctrl 也可接受。
+inoremap jk <ESC>l
+
+"key mapping for the taglist.vim plugin
+nnoremap <F8>      :Tlist<CR>
+inoremap <F8> <C-O>:Tlist<CR>
+
+" NerdTree
+nnoremap <F9>      :NERDTreeToggle<CR>
+inoremap <F9> <C-O>:NERDTreeToggle<CR>
+
+",w to save
+nnoremap  ,w  :w<CR>
+
+",e open .vimrc file
+noremap <leader>e  <ESC>:e $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" When vimrc is edited, reload it
+autocmd! bufwritepost vimrc source ~/.vim/vimrc
+
+""""""""""""""""""""
+"   visual mode copy to the + register
+"   the + * register is relative to the X's clipboard (only for x11)
+""""""""""""""""""""""
+vnoremap <C-X>   "+y
+
+"pahogen init
+execute pathogen#infect()
+
+"""""""""""""""""""""""""""""""
+"
+"   tcomment
+"
+""""""""""""""""""""""""""""""""
+"use ctrl-c to comment and uncomment
+map <C-c>  gcc<esc>
+
+""""""""""""""""""""""""""
+"       ctrlp
+""""""""""""""""""""""""""
+let g:ctrlp_map = ',,'
+let g:ctrlp_open_multiple_files = 'v'
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git)$',
+  \ 'file': '\v\.(log|jpg|png|jpeg)$',
+  \ }
+
+""""""""""""""""""""""""""""""""""""""""
+""       auto-save
+"""""""""""""""""""""""""""""""""""""""""
+let g:auto_save = 1
+let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+
+" now if you have spaces at end of lines, you get notified
+set list
+set listchars=trail:+
+
+" slime of lisp
+let g:slime_target = "tmux"
+" let g:slimv_swank_cmd = '! xterm -e sbcl --load ~/.vim/slime/start-swank.lisp &'
+"
+" let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp\""'
+
+let g:paredit_mode=0
+let g:lisp_rainbow=1
+autocmd FileType lisp setlocal iskeyword=33,36,38,42,43,45,47-58,60-62,63,64-90,97-122,_,-
+" autocmd FileType ruby setlocal iskeyword=33,36,38,42,43,45,47-58,60-62,63,64-90,97-122,_
+
+"git commit message
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
+"go
+" let g:go_disable_autoinstall = 1
+" autocmd FileType go setlocal expandtab shiftwidth=2 tabstop=2
+" let g:go_snippet_engine = "neosnippet"
+
+
+" let g:NERDTreeDirArrows=0
+
+"markdown
+let g:vim_markdown_folding_disabled=1
+
+"added by mac and should add to .vimrc in git rep
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
+
+" map \ 为 ,, this for 方向查抄功能（用;查找下一个，\则返回上个查找"map
+noremap \ ,
+
+noremap  <leader>f :quit!<CR>
+noremap <Space> :
+
+" ," 加上双引号 vim-surround 用法: ysiw"
+nnoremap <leader>"  :normal ysiw"<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Helper functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! CmdLine(str)
+    exe "menu Foo.Bar :" . a:str
+    emenu Foo.Bar
+    unmenu Foo
+endfunction
+
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'b'
+        execute "normal ?" . l:pattern . "^M"
+    elseif a:direction == 'gv'
+        call CmdLine("Ack \"" . l:pattern . "\" " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    elseif a:direction == 'f'
+        execute "normal /" . l:pattern . "^M"
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
+
+" Returns true if paste mode is enabled
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    en
+    return ''
+endfunction
+
+" Don't close window, when deleting a buffer
+command! Bclose call <SID>BufcloseCloseIt()
+function! <SID>BufcloseCloseIt()
+   let l:currentBufNum = bufnr("%")
+   let l:alternateBufNum = bufnr("#")
+
+   if buflisted(l:alternateBufNum)
+     buffer #
+   else
+     bnext
+   endif
+
+   if bufnr("%") == l:currentBufNum
+     new
+   endif
+
+   if buflisted(l:currentBufNum)
+     execute("bdelete! ".l:currentBufNum)
+   endif
+endfunction
+
+" Exercises
+"
