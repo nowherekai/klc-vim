@@ -344,6 +344,7 @@ nnoremap  ,w  :w<CR>
 
 ",e open .vimrc file
 noremap <leader>e  <ESC>:e $MYVIMRC<CR>
+noremap <leader>s  <ESC>:e ~/.vim/bundle/snipmate/snippets/ruby.snippets<CR>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " When vimrc is edited, reload it
