@@ -383,6 +383,7 @@ let g:ctrlp_custom_ignore = {
 ""       auto-save
 """""""""""""""""""""""""""""""""""""""""
 let g:auto_save = 1
+let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 
 " now if you have spaces at end of lines, you get notified
 set list
