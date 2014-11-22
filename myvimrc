@@ -26,6 +26,7 @@ let g:mapleader = ","
 if has("autocmd")
   filetype plugin indent on
 endif
+set nocompatible
 
 """"""""""""""""""""""""""""""""""""
 " Vim user interface
