@@ -431,6 +431,9 @@ noremap <Space> :
 " ," 加上双引号 vim-surround 用法: ysiw"
 nnoremap <leader>"  :normal ysiw"<cr>
 
+" youcompleme and snipmate confit about tab
+let g:snips_trigger_key = '<C-J\>'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
