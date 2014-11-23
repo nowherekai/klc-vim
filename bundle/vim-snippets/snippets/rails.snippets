@@ -264,6 +264,8 @@ snippet rxml
 	render xml: '${0:text to render}'
 snippet sc
 	scope :${1:name}, -> { where(${2:field}: ${0:value}) }
+snippet sco
+	scope :${1:name}, -> (${2:parameter}) { where(${3:field}: ${0:value}) }
 snippet sl
 	scope :${1:name}, lambda do |${2:value}|
 		where('${3:field = ?}', ${0:value})
