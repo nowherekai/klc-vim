@@ -331,6 +331,7 @@ noremap ,ig: setlocal ignorecase!<cr>
 
 " also have <c-c> <c-[>,  把capslock 改为ctrl 也可接受。
 inoremap jk <ESC>l
+vnoremap jk <ESC>l
 
 "key mapping for the taglist.vim plugin
 nnoremap <F8>      :Tlist<CR>
@@ -432,12 +433,16 @@ noremap <Space> :
 nnoremap <leader>"  :normal ysiw"<cr>
 
 " youcompleme and snipmate confit about tab
+" not use youcompleme me in rails
+" let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
+"
 " :h SnipMate-mappings for other
 " imap <C-J> <Plug>snipMateNextOrTrigger
 " smap <C-J> <Plug>snipMateNextOrTrigger
-
-imap ss <esc>a<Plug>snipMateNextOrTrigger
-smap ss <Plug>snipMateNextOrTrigger
+"
+" imap ss <esc>a<Plug>snipMateNextOrTrigger
+" smap ss <Plug>snipMateNextOrTrigger
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
