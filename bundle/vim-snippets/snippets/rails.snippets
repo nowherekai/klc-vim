@@ -286,10 +286,8 @@ snippet sweeper
 			expire_page
 		end
 	end
-snippet va validates_associated
-	validates_associated :${0:attribute}
-snippet va validates .., acceptance: true
-	validates :${0:terms}, acceptance: true
+snippet va
+	validates :${0:attribute}
 snippet vc
 	validates :${0:attribute}, confirmation: true
 snippet ve
@@ -306,6 +304,8 @@ snippet vp
 	validates :${0:attribute}, presence: true
 snippet vu
 	validates :${0:attribute}, uniqueness: true
+snippet vpu
+	validates :${0:attribute}, presence: true, uniqueness: true
 snippet format
 	format.${1:js|xml|html} { ${0} }
 snippet wc
