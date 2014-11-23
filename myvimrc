@@ -178,8 +178,8 @@ imap  <silent> <C-J> <C-O>j
 imap  <silent> <C-k> <C-O>k
 imap  <silent> <C-h> <C-O>h
 imap  <silent> <C-l> <C-O>l
-
-" Smart way to move between windows. cool!
+"
+" " Smart way to move between windows. cool!
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
@@ -432,7 +432,11 @@ noremap <Space> :
 nnoremap <leader>"  :normal ysiw"<cr>
 
 " youcompleme and snipmate confit about tab
-let g:snips_trigger_key = '<C-J\>'
+" :h SnipMate-mappings for other
+" imap <C-J> <Plug>snipMateNextOrTrigger
+" smap <C-J> <Plug>snipMateNextOrTrigger
+imap ss <esc>a<Plug>snipMateNextOrTrigger
+smap ss <Plug>snipMateNextOrTrigger
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
