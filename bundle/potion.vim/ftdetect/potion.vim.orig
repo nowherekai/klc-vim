@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-au BufRead,BufNewFile *.stc set filetype=potion
-=======
-au BufRead,BufNewFile *.pn set filetype=potion
->>>>>>> 7eb1421c083ec078fbeb2efc0a352017af2e4dfa
