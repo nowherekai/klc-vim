@@ -440,7 +440,7 @@ nnoremap <leader>"  :normal ysiw"<cr>
 "
 " :h SnipMate-mappings for other
 " imap <C-J> <Plug>snipMateNextOrTrigger
-smap <C-J> <Plug>snipMateNextOrTrigger
+" smap <C-J> <Plug>snipMateNextOrTrigger
 "
 " imap ss <esc>a<Plug>snipMateNextOrTrigger
 " smap ss <Plug>snipMateNextOrTrigger
