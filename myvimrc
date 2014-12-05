@@ -198,7 +198,7 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 " Remember info about open buffers on close
-set viminfo^=%
+" set viminfo^=%
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
@@ -346,7 +346,7 @@ nnoremap  ,w  :w<CR>
 
 ",e open .vimrc file
 noremap <leader>e  <ESC>:e $MYVIMRC<CR>
-noremap <leader>s  <ESC>:e ~/.vim/bundle/snipmate/snippets/ruby.snippets<CR>
+noremap <leader>s  <ESC>:e ~/.vim/bundle/vim-snippets/snippets/ruby.snippets<CR>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " When vimrc is edited, reload it
@@ -439,8 +439,6 @@ nnoremap <leader>"  :normal ysiw"<cr>
 " let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
 "
 " :h SnipMate-mappings for other
-" imap <C-J> <Plug>snipMateNextOrTrigger
-smap <C-J> <Plug>snipMateNextOrTrigger
 "
 " imap ss <esc>a<Plug>snipMateNextOrTrigger
 " smap ss <Plug>snipMateNextOrTrigger
