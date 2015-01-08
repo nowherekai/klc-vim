@@ -81,6 +81,12 @@ snippet im
 	import (
 		"${1:package}"
 	)
+#interface
+snippet tin
+	type ${1:name} interface {
+		${2: }
+	}
+	${0}
 # interface
 snippet in
 	interface{}
@@ -134,6 +140,12 @@ snippet fo
 		${4}
 	}
 	${0}
+# for infinite loop
+snippet for
+	for {
+		${1}
+	}
+	${0}
 # for range loop
 snippet fr
 	for ${1:k}, ${2:v} := range ${3} {
@@ -179,6 +191,8 @@ snippet pn
 # print
 snippet pr
 	fmt.Printf("%${1:s}\n", ${2:var})
+snippet prn
+	fmt.Println(${1:})
 # range
 snippet rn
 	range ${0}
@@ -201,6 +215,12 @@ snippet sl
 # string
 snippet sr
 	string
+#type
+snippet tst
+	type ${1:typename} struct {
+		${2:/* data */}
+	}
+	${0}
 # struct
 snippet st
 	struct ${1:name} {
@@ -225,7 +245,7 @@ snippet t
 # goroutine named function
 snippet g
 	go ${1:funcName}(${0})
-# goroutine anonymous function 
+# goroutine anonymous function
 snippet ga
 	go func(${1} ${2:type}) {
 		${3:/* code */}

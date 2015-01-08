@@ -439,6 +439,8 @@ nnoremap <leader>"  :normal ysiw"<cr>
 " let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
 "
 " :h SnipMate-mappings for other
+" imap <C-J> <Plug>snipMateNextOrTrigger
+" smap <C-J> <Plug>snipMateNextOrTrigger
 "
 " imap ss <esc>a<Plug>snipMateNextOrTrigger
 " smap ss <Plug>snipMateNextOrTrigger
