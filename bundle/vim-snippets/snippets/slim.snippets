@@ -51,6 +51,15 @@ snippet esc
 
 # Forms
 # =====
+snippet form
+	= form_for @${1:article} do |f|
+		${0}
+snippet fg
+	.form-group
+snippet fl
+	= f.label :${1:title}, class: "control-label"
+snippet ft
+	= f.text_field :${1:title}, class: "form-control"
 snippet fieldset
 	fieldset
 		legend ${1}
