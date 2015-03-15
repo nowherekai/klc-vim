@@ -34,6 +34,14 @@ snippet btp
 	belongs_to :${1:association}, polymorphic: true
 snippet crw
 	cattr_accessor :${0:attr_names}
+snippet deffind
+	def find_${1:model_class_name}
+		@$1 = ${2:ModelClassName}.find(params[:id])
+	end
+snippet defp
+	def ${1:model_class_name}_params
+		params.require(:$1).permit(${2})
+	end
 snippet defcreate
 	def create
 		@${1:model_class_name} = ${2:ModelClassName}.new($1_params)
