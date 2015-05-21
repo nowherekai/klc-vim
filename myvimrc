@@ -330,9 +330,9 @@ noremap ,ss : setlocal spell!<cr>
 noremap ,ig: setlocal ignorecase!<cr>
 
 " also have <c-c> <c-[>,  把capslock 改为ctrl 也可接受。
-inoremap jk <ESC>l
-vnoremap jk <ESC>l
-snoremap jk <ESC>l
+inoremap jk <ESC>
+vnoremap jk <ESC>
+snoremap jk <ESC>
 
 "key mapping for the taglist.vim plugin
 nnoremap <F8>      :Tlist<CR>
@@ -516,3 +516,5 @@ function! <SID>BufcloseCloseIt()
 endfunction
 
 " Exercises
+" read source code
+" set foldmethod=syntax
