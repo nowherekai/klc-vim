@@ -10,4 +10,5 @@ git clone https://github.com/nowherekai/klc-vim.git
 
 "a vim colorsheme i use is git@github.com:flazz/vim-colorschemes.git
 " it is too big that i set git to not include it
+"test
 
