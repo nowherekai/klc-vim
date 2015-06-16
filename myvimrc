@@ -82,20 +82,14 @@ syntax enable
 
 " mac 配合monokai 使用，  ubuntu直接使用就行
 try
-  colorscheme desert
+  " colorscheme desert
 catch
 endtry
 
-"molokai color scheme
+" molokai color scheme
+" set background=dark
 " let g:molokai_original = 1
-
-"solarized
-" if has('gui_running')
-"   set background=light
-" else
-"   set background=dark
-" endif
-" colorscheme solarized
+" colorscheme molokai
 
 
 """""""" peaksea
@@ -517,4 +511,15 @@ endfunction
 
 " Exercises
 " read source code
+" r
 " set foldmethod=syntax
+
+"solarized
+" if has('gui_running')
+"   set background=light
+" else
+"   set background=dark
+" endif
+
+" colorscheme solarized
+colorscheme molokai
