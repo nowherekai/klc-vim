@@ -80,21 +80,18 @@ endif
 " " Enable syntax highlighting
 syntax enable
 
-" mac 配合monokai 使用，  ubuntu直接使用就行
 try
   colorscheme desert
 catch
 endtry
 
-"molokai color scheme
-" let g:molokai_original = 1
 
 "solarized
 " if has('gui_running')
 "   set background=light
 " else
-"   set background=dark
 " endif
+" set background=dark
 " colorscheme solarized
 
 
@@ -518,3 +515,7 @@ endfunction
 " Exercises
 " read source code
 " set foldmethod=syntax
+"
+" set background=dark
+" colorscheme solarized
+let g:ackprg = 'ag --nogroup --nocolor --column'
