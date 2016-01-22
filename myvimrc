@@ -246,6 +246,11 @@ autocmd BufWrite * :call RemoveTrailingSpace()
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap ,g :Ack <cword><CR>
 
+"""""""""""""""""""
+" => serach word in dash
+"""""""""""""""""
+nnoremap ,d :Dash <cword><CR>
+
 " When you press gv you Ack after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
