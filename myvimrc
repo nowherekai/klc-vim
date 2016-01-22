@@ -532,5 +532,5 @@ endfunction
 " colorscheme solarized
 colorscheme molokai
 
-let g:syntastic_ruby_exec = '/Users/nowherekai/.rvm/rubies/ruby-2.2.3/bin/ruby'
+let g:syntastic_ruby_exec = '/Users/nowherekai/.rvm/rubies/ruby-2.3.0/bin/ruby'
 let g:NERDTreeWinSize = 20
