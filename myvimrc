@@ -454,6 +454,9 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
+" save with root permission
+" cmap w!! %!sudo tee > /dev/null %
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -530,3 +533,4 @@ endfunction
 colorscheme molokai
 
 let g:syntastic_ruby_exec = '/Users/nowherekai/.rvm/rubies/ruby-2.2.3/bin/ruby'
+let g:NERDTreeWinSize = 20
