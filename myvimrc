@@ -400,10 +400,10 @@ set listchars=tab:▸\ ,trail:+
 " set listchars=trail:+
 
 " slime of lisp
-" let g:slime_target = "tmux"
+" let g:slime_target = \"tmux"
 " let g:slimv_swank_cmd = '! xterm -e sbcl --load ~/.vim/slime/start-swank.lisp &'
 "
-" let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp\""'
+" let g:slimv_swank_cmd = '!osascript -e \"tell application \"Terminal\" to do script \"sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp\""'
 
 " let g:slimv_swank_clojure = '! xterm -e lein swank &'
 
