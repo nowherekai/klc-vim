@@ -81,7 +81,7 @@ endif
 syntax enable
 
 try
-  colorscheme desert
+  " colorscheme desert
 catch
 endtry
 
@@ -93,6 +93,10 @@ endtry
 " endif
 " set background=dark
 " colorscheme solarized
+" molokai color scheme
+" set background=dark
+" let g:molokai_original = 1
+" colorscheme molokai
 
 
 """""""" peaksea
@@ -249,6 +253,11 @@ autocmd BufWrite * :call RemoveTrailingSpace()
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap ,g :Ack <cword><CR>
 
+"""""""""""""""""""
+" => serach word in dash
+"""""""""""""""""
+nnoremap ,d :Dash <cword><CR>
+
 " When you press gv you Ack after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
@@ -390,19 +399,20 @@ let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 
 " now if you have spaces at end of lines, you get notified
-" set list
+set list
 " autocmd FileType go setlocal  list!
 
 " set listchars=tab:▸\ ,eol:c,trail:+
-set listchars=trail:+
+set listchars=tab:▸\ ,trail:+
+" set listchars=trail:+
 
 " slime of lisp
-let g:slime_target = "tmux"
+" let g:slime_target = \"tmux"
 " let g:slimv_swank_cmd = '! xterm -e sbcl --load ~/.vim/slime/start-swank.lisp &'
 "
-" let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp\""'
+" let g:slimv_swank_cmd = '!osascript -e \"tell application \"Terminal\" to do script \"sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp\""'
 
-let g:slimv_swank_clojure = '! xterm -e lein swank &'
+" let g:slimv_swank_clojure = '! xterm -e lein swank &'
 
 let g:paredit_mode=0
 let g:lisp_rainbow=1
@@ -451,6 +461,14 @@ nnoremap <leader>"  :normal ysiw"<cr>
 smap <Tab> <Plug>snipMateNextOrTrigger
 imap <Tab> <Plug>snipMateNextOrTrigger
 
+" persisiten undo
+set undodir=~/.vim/.undo "you may should muany create the .undo directory
+set undofile
+set undolevels=1000
+set undoreload=10000
+
+" save with root permission
+" cmap w!! %!sudo tee > /dev/null %
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -514,6 +532,7 @@ endfunction
 
 " Exercises
 " read source code
+" r
 " set foldmethod=syntax
 "
 " set background=dark
@@ -524,3 +543,16 @@ set undodir=~/.vim/.undo
 set undofile
 set undolevels=1000
 set undoreload=10000
+
+"solarized
+" if has('gui_running')
+"   set background=light
+" else
+"   set background=dark
+" endif
+
+" colorscheme solarized
+colorscheme molokai
+
+let g:syntastic_ruby_exec = '/Users/nowherekai/.rvm/rubies/ruby-2.3.0/bin/ruby'
+let g:NERDTreeWinSize = 20
