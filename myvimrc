@@ -539,11 +539,6 @@ endfunction
 " colorscheme solarized
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-set undodir=~/.vim/.undo
-set undofile
-set undolevels=1000
-set undoreload=10000
-
 "solarized
 " if has('gui_running')
 "   set background=light
