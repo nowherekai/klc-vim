@@ -58,7 +58,7 @@ snippet ffi
 snippet ffcb
 	<%= ${1:f}.check_box :${0:attribute} %>
 snippet ffe
-	<% error_messages_for :${1:model} %>
+	<% error_messages_for :${2:model} %>
 
 	<%= form_for @${2:model} do |f| %>
 		${0}
@@ -68,13 +68,13 @@ snippet ffff
 snippet ffhf
 	<%= ${1:f}.hidden_field :${0:attribute} %>
 snippet ffl
-	<%= ${1:f}.label :${2:attribute}, '${0:$2}' %>
+	<%= ${1:f}.label :${2:attribute} %>
 snippet ffpf
 	<%= ${1:f}.password_field :${0:attribute} %>
 snippet ffrb
 	<%= ${1:f}.radio_button :${2:attribute}, :${0:tag_value} %>
 snippet ffs
-	<%= ${1:f}.submit "${0:submit}" %>
+	<%= ${1:f}.submit %>
 snippet ffta
 	<%= ${1:f}.text_area :${0:attribute} %>
 snippet fftf

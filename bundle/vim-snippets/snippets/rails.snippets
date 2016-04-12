@@ -46,7 +46,7 @@ snippet defcreate
 	def create
 		@${1:model_class_name} = ${2:ModelClassName}.new($1_params)
 		if @$1.save
-			flash[:notice] = '$2 was successfully created.'
+			flash[:notice] = '$2 has been created.'
 			redirect_to(@$1)
 		else
 			render :new
@@ -80,7 +80,7 @@ snippet defupdate
 		@${1:model_class_name} = ${2:ModelClassName}.find(params[:id])
 
 		if @$1.update_attributes($1_params)
-			flash[:notice] = '$2 was successfully updated.'
+			flash[:notice] = '$2 has been updated.'
 			redirect_to(@$1)
 		else
 			render :edit
@@ -124,19 +124,12 @@ snippet logi
 	logger.info { '${1:message}' }
 snippet logw
 	logger.warn { '${1:message}' }
-snippet mapc
-	${1:map}.${2:connect} '${0:controller/:action/:id}'
-snippet mapca
-	${1:map}.catch_all '*${2:anything}', controller: '${3:default}', action: '${4:error}'
-snippet mapr
-	${1:map}.resource :${0:resource}
-snippet maprs
-	${1:map}.resources :${0:resource}
-snippet mapwo
-	${1:map}.with_options ${2:controller}: '${3:thing}' do |$3|
-		${0}
-	end
 
+#############route######
+snippet res
+	resources :${0:resource}
+snippet ro
+	root "${1:}#${0:}"
 ###############################
 #   model callback snippets   #
 ###############################
@@ -304,7 +297,7 @@ snippet xpost
 snippet xput
 	xhr :put, :${1:update}, id: ${2:1}, ${3:object}: ${4:object}
 snippet test
-	test 'should ${1:do something}' do
+	test '${1:do something}' do
 		${0}
 	end
 ###########################

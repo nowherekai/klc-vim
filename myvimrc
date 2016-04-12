@@ -236,6 +236,14 @@ function! RemoveTrailingSpace()
   normal ``
  endif
 endfunction
+function! ReplaceQuote()
+  normal m`
+  silent! :%s/“/"/ge
+  silent! :%s/”/"/ge
+  silent! :%s/‘/'/ge
+  silent! :%s/’/'/ge
+  normal ``
+endfunction
 " replace table by space
 function! ReplaceTableWithSpaceAndRemoveTrailingSpace()
   normal m`
@@ -552,3 +560,7 @@ colorscheme molokai
 
 let g:syntastic_ruby_exec = '/Users/nowherekai/.rvm/rubies/ruby-2.3.0/bin/ruby'
 let g:NERDTreeWinSize = 20
+
+" for rails test
+" puts the caller
+nnoremap <leader>wtf oputs "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
