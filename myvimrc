@@ -186,6 +186,9 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" close window
+noremap ,c :close<cr>
+
 """"""""""""""""""""""""""""""""""""""""
 ""             buffers
 """""""""""""""""""""""""""""""""""""""""
@@ -206,7 +209,7 @@ endif
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "---------------键盘映射------------------"
 " Remap VIM 0 to first non-blank character
-noremap 0 ^
+" noremap 0 ^
 nmap <silent> <F2>      :noh<CR>
 imap <silent> <F2> <esc> :noh<CR>
 
