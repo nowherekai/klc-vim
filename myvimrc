@@ -567,3 +567,27 @@ let g:NERDTreeWinSize = 20
 " for rails test
 " puts the caller
 nnoremap <leader>wtf oputs "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
+
+
+
+""""""""""""""""""""""""""""""""
+" hightlight current line number
+""""""""""""""""""""""""""""""""
+"hight current line
+" hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+" hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+" nnoremap <Leader>l :set cursorline! cursorcolumn!<CR>
+nnoremap <Leader>l :set cursorline!<CR>
+
+"Clear the highlighting of CursorLine: just hi clear CursorLine after any :colorscheme and set background= call.
+hi clear CursorLine
+augroup CLClear
+  autocmd! ColorScheme * hi clear CursorLine
+augroup END
+
+" Set the highlighting of CursorLineNR if it is not set in your colorscheme:
+hi CursorLineNR cterm=bold
+augroup CLNRSet
+  autocmd! ColorScheme * hi CursorLineNR cterm=bold
+augroup END
+set cursorline
