@@ -455,6 +455,9 @@ noremap \ ,
 noremap  <leader>f :quit!<CR>
 noremap <Space> :
 
+"disable Ctrl-A add count to number, for I always careless press it
+noremap <C-A> <Nop>
+
 " ," 加上双引号 vim-surround 用法: ysiw"
 nnoremap <leader>"  :normal ysiw"<cr>
 
