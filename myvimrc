@@ -94,9 +94,9 @@ endtry
 " set background=dark
 " colorscheme solarized
 " molokai color scheme
-" set background=dark
-" let g:molokai_original = 1
-" colorscheme molokai
+set background=dark
+let g:molokai_original = 1
+colorscheme molokai
 
 
 """""""" peaksea
@@ -561,7 +561,6 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 " endif
 
 " colorscheme solarized
-colorscheme molokai
 
 
 let g:syntastic_ruby_exec = '/Users/nowherekai/.rvm/rubies/ruby-2.3.0/bin/ruby'

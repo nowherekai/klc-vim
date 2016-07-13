@@ -270,14 +270,20 @@ snippet ve
 	validates :${1:attribute}, exclusion: { in: ${0:%w( mov avi )} }
 snippet vf
 	validates :${1:attribute}, format: { with: /${0:regex}/ }
+snippet vfo
+	validates_format_of :${1:attribute}, with: /${2:regex}/
 snippet vi
 	validates :${1:attribute}, inclusion: { in: %w(${0: mov avi }) }
 snippet vl
 	validates :${1:attribute}, length: { in: ${2:3}..${0:20} }
+snippet vlo
+	validates_length_of :${1:attribute}, ${2}
 snippet vn
 	validates :${0:attribute}, numericality: true
 snippet vp
 	validates :${0:attribute}, presence: true
+snippet vpo
+	validates_presence_of :${0:attribute}
 snippet vu
 	validates :${0:attribute}, uniqueness: true
 snippet vpu
