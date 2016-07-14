@@ -45,6 +45,7 @@ set ignorecase    "Do case insensitive matching
 set smartcase    "Do smart case matching
 
 set number
+set relativenumber " see https://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earlier/
 " a buffer is hidden when is abandoned
 set hid
 
@@ -175,6 +176,13 @@ noremap  k gk
 noremap  <Down> gj
 noremap  <Up> gk
 
+""""""""
+"use with relative number
+"see https://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earlier/
+""""""""
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+
 imap  <silent> <C-J> <C-O>j
 imap  <silent> <C-k> <C-O>k
 imap  <silent> <C-h> <C-O>h
@@ -216,7 +224,7 @@ imap <silent> <F2> <esc> :noh<CR>
 " paste model
 set pastetoggle=<f4>
 
-nnoremap ,l :set number! <CR>
+" nnoremap ,l :set number! <CR>
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 " not work on mac ??
 nmap <M-j> mz:m+<cr>`z
