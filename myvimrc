@@ -53,8 +53,8 @@ set hid
 set noerrorbells
 set novisualbell
 
-"?
-set t_vb=
+"visual bell
+" set t_vb=
 "?
 set tm=500
 
