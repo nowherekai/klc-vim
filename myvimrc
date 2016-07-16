@@ -480,6 +480,12 @@ noremap <C-A> <Nop>
 " ," 加上双引号 vim-surround 用法: ysiw"
 nnoremap <leader>"  :normal ysiw"<cr>
 
+""""""""complete""""""
+" :help 'complete' for detail(have single quote)
+" default complete=.,w,b,u,t
+" t for tags
+
+
 " youcompleme and snipmate confit about tab
 " not use youcompleme me in rails
 " let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
@@ -582,7 +588,7 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 " colorscheme solarized
 
 
-let g:syntastic_ruby_exec = '/Users/nowherekai/.rvm/rubies/ruby-2.3.0/bin/ruby'
+let g:syntastic_ruby_exec = 'which ruby'
 let g:NERDTreeWinSize = 20
 
 " for rails test
