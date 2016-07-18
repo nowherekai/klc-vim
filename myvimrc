@@ -341,7 +341,13 @@ set softtabstop=2
 """""""""""""""""""
 "   set statusline to show the decode infomation
 "   see h statusline
-set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+" origin
+" set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+" add tag name
+set statusline=%<%f\ %h%m%r%([%{Tlist_Get_Tagname_By_Line()}]%)%=\ %k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+
+" show tag name
+" set statusline=%<%f%=%([%{Tlist_Get_Tagname_By_Line()}]%)
 
 """""""""""""""
 "   help path
@@ -370,9 +376,13 @@ inoremap jk <ESC>
 vnoremap jk <ESC>
 snoremap jk <ESC>
 
+"""""" taglist
 "key mapping for the taglist.vim plugin
 nnoremap <F8>      :Tlist<CR>
 inoremap <F8> <C-O>:Tlist<CR>
+
+" for show tag name in status line
+let Tlist_Process_File_Always = 1
 
 "tagbar
 nmap <F7> :TagbarToggle<CR>
