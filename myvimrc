@@ -384,9 +384,9 @@ snoremap jk <ESC>
 " for show tag name in status line
 " let Tlist_Process_File_Always = 1
 
-"tagbar
-nmap <F7> :TagbarToggle<CR>
-inoremap <F7> <C-O>:TagbarToggle<CR>
+"""""" tagbar
+nmap <F8> :TagbarToggle<CR>
+inoremap <F8> <C-O>:TagbarToggle<CR>
 
 " NerdTree
 nnoremap <F9>      :NERDTreeToggle<CR>
