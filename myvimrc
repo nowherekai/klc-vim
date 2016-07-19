@@ -533,7 +533,9 @@ smap <Tab> <Plug>snipMateNextOrTrigger
 imap <Tab> <Plug>snipMateNextOrTrigger
 
 " persisiten undo
+" if .undo exist then persisiten undo
 set undodir=~/.vim/.undo "you may should muany create the .undo directory
+
 set undofile
 set undolevels=1000
 set undoreload=10000
