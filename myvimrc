@@ -378,11 +378,11 @@ snoremap jk <ESC>
 
 """""" taglist
 "key mapping for the taglist.vim plugin
-nnoremap <F8>      :Tlist<CR>
-inoremap <F8> <C-O>:Tlist<CR>
+" nnoremap <F8>      :Tlist<CR>
+" inoremap <F8> <C-O>:Tlist<CR>
 
 " for show tag name in status line
-let Tlist_Process_File_Always = 1
+" let Tlist_Process_File_Always = 1
 
 "tagbar
 nmap <F7> :TagbarToggle<CR>
