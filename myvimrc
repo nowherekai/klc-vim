@@ -445,11 +445,20 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(log|jpg|png|jpeg)$',
   \ }
 
+""""""""""""""""""""
+""easytags
+""""""""""""""""""""""
+let g:easytags_async=1
+let g:easytags_dynamic_files = 1 "only write to current ./tags
+
 """"""""""""""""""""""""""""""""""""""""
 ""       auto-save
 """""""""""""""""""""""""""""""""""""""""
 let g:auto_save = 1
+set updatetime=2000 "save per 2 seconds
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+let g:auto_save_postsave_hook = 'UpdateTags'
+
 
 " now if you have spaces at end of lines, you get notified
 set list
