@@ -1,15 +1,7 @@
-" string.vim
 " @Author:      Tom Link (micathom AT gmail com?subject=[vim])
 " @Website:     http://www.vim.org/account/profile.php?user_id=4037
 " @License:     GPL (see http://www.gnu.org/licenses/gpl.txt)
-" @Created:     2007-06-30.
-" @Last Change: 2009-02-15.
-" @Revision:    0.0.115
-
-if &cp || exists("loaded_tlib_string_autoload")
-    finish
-endif
-let loaded_tlib_string_autoload = 1
+" @Revision:    126
 
 
 " :def: function! tlib#string#RemoveBackslashes(text, ?chars=' ')
@@ -30,6 +22,12 @@ function! tlib#string#Chomp(string, ...) "{{{3
 endf
 
 
+" Format a template string. Placeholders have the format "%{NAME}". A 
+" "%" can be inserted as "%%".
+"
+" Examples:
+"   echo tlib#string#Format("foo %{bar} foo", {'bar': 123})
+"   => foo 123 foo
 function! tlib#string#Format(template, dict) "{{{3
     let parts = split(a:template, '\ze%\({.\{-}}\|.\)')
     let out = []
@@ -156,3 +154,19 @@ function! s:CountHelper() "{{{3
     let s:count += 1
 endf
 
+
+function! tlib#string#SplitCommaList(text, ...) abort "{{{3
+    let sep = a:0 >= 1 ? a:1 : ',\s*'
+    let parts = split(a:text, '\\\@<!\zs'. sep)
+    let parts = map(parts, 'substitute(v:val, ''\\\(.\)'', ''\1'', ''g'')')
+    return parts
+endf
+
+
+function! tlib#string#Input(...) abort "{{{3
+    TVarArg ['text', ''], ['completion', '']
+    call inputsave()
+    let rv = call(function('input'), a:000)
+    call inputrestore()
+    return rv
+endf
