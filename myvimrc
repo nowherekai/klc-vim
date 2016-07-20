@@ -455,10 +455,10 @@ let g:easytags_dynamic_files = 1 "only write to current ./tags
 ""       auto-save
 """""""""""""""""""""""""""""""""""""""""
 let g:auto_save = 1
-" set updatetime=10000 "
-let g:auto_save_no_updatetime = 1
+set updatetime=1000 "
+" let g:auto_save_no_updatetime = 1
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
-let g:auto_save_postsave_hook = 'UpdateTags'
+" let g:auto_save_postsave_hook = 'UpdateTags'
 
 
 " now if you have spaces at end of lines, you get notified
@@ -504,7 +504,7 @@ cnoremap <C-n> <Down>
 " map \ 为 ,, this for 方向查抄功能（用;查找下一个，\则返回上个查找"map
 noremap \ ,
 
-noremap  <leader>f :quit!<CR>
+noremap  <leader>f :quit<CR>
 noremap <Space> :
 
 "disable Ctrl-A add count to number, for I always careless press it
