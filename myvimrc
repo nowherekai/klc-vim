@@ -455,7 +455,8 @@ let g:easytags_dynamic_files = 1 "only write to current ./tags
 ""       auto-save
 """""""""""""""""""""""""""""""""""""""""
 let g:auto_save = 1
-set updatetime=2000 "save per 2 seconds
+" set updatetime=10000 "
+let g:auto_save_no_updatetime = 1
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 let g:auto_save_postsave_hook = 'UpdateTags'
 
@@ -626,9 +627,9 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 "syntastic
 """""
 " let g:syntastic_ruby_exec = 'which ruby'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 " for rails test
