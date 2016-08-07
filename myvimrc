@@ -264,7 +264,7 @@ function! ReplaceTableWithSpaceAndRemoveTrailingSpace()
 endfunction
 nnoremap <silent> <leader><space>     :call ReplaceTableWithSpaceAndRemoveTrailingSpace()<CR>
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
-autocmd BufWrite * :call RemoveTrailingSpace()
+" autocmd BufWrite * :call RemoveTrailingSpace()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ack searching and cope displaying
@@ -344,7 +344,7 @@ set softtabstop=2
 " origin
 " set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 " add tag name
-set statusline=%<%f\ %h%m%r%([%{Tlist_Get_Tagname_By_Line()}]%)%=\ %k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+" set statusline=%<%f\ %h%m%r%([%{Tlist_Get_Tagname_By_Line()}]%)%=\ %k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 
 " show tag name
 " set statusline=%<%f%=%([%{Tlist_Get_Tagname_By_Line()}]%)
@@ -409,12 +409,10 @@ let g:NERDTreeWinSize = 20
 nnoremap  ,w  :w<CR>
 
 ",e open .vimrc file
-noremap <leader>e  <ESC>:e $MYVIMRC<CR>
-noremap <leader>s  <ESC>:e ~/.vim/bundle/vim-snippets/snippets/ruby.snippets<CR>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>rr :source $MYVIMRC<cr>
 
 " When vimrc is edited, reload it
-autocmd! bufwritepost vimrc source ~/.vim/vimrc
+autocmd! bufwritepost vimrc source ~/.vimrc
 
 """"""""""""""""""""
 "   visual mode copy to the + register
@@ -456,7 +454,7 @@ let g:easytags_dynamic_files = 1 "only write to current ./tags
 """""""""""""""""""""""""""""""""""""""""
 let g:auto_save = 1
 set updatetime=1000 "
-" let g:auto_save_no_updatetime = 1
+let g:auto_save_no_updatetime = 1
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 " let g:auto_save_postsave_hook = 'UpdateTags'
 
@@ -611,7 +609,9 @@ endfunction
 "
 " set background=dark
 " colorscheme solarized
-let g:ackprg = 'ag --nogroup --nocolor --column'
+" if executable('ag')
+"   let g:ackprg = 'ag --vimgrep'
+  " endif
 
 "solarized
 " if has('gui_running')
@@ -659,3 +659,12 @@ augroup CLNRSet
   autocmd! ColorScheme * hi CursorLineNR cterm=bold
 augroup END
 set cursorline
+
+" fix meta-keys which generate <Esc>a .. <Esc>z
+let c='a'
+while c <= 'z'
+  exec "set <M-".toupper(c).">=\e".c
+  exec "imap \e".c." <M-".toupper(c).">"
+  let c = nr2char(1+char2nr(c))
+endw
+let g:AutoPairsShortcutFastWrap = "Å"
