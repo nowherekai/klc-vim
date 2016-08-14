@@ -1,12 +1,9 @@
-# encodinj for Ruby 1.9
 snippet enc
 	# encoding: utf-8
-
-# #!/usr/bin/env ruby
+snippet frozen
+	# frozen_string_literal: true
 snippet #!
 	#!/usr/bin/env ruby
-	# encoding: utf-8
-
 # New Block
 snippet =b
 	=begin rdoc
@@ -14,9 +11,11 @@ snippet =b
 	=end
 snippet prot
 	protected
+
 	${0}
 snippet priv
 	private
+
 	${0}
 snippet y
 	:yields: ${0:arguments}
@@ -27,15 +26,12 @@ snippet beg
 		${0}
 	rescue ${1:Exception} => ${2:e}
 	end
-
 snippet req require
 	require '${1}'
 snippet reqr
 	require_relative '${1}'
 snippet #
 	# =>
-snippet end
-	__END__
 snippet case
 	case ${1:object}
 	when ${2:condition}
@@ -71,9 +67,31 @@ snippet ife
 snippet eif
 	elsif ${1:condition}
 		${0}
+snippet ifee
+	if ${1:condition}
+		$2
+	elsif ${3:condition}
+		$4
+	else
+		$0
+	end
 snippet unless
 	unless ${1:condition}
 		${0}
+	end
+snippet unlesse
+	unless ${1:condition}
+		$2
+	else
+		$0
+	end
+snippet unlesee
+	unless ${1:condition}
+		$2
+	elsif ${3:condition}
+		$4
+	else
+		$0
 	end
 snippet wh
 	while ${1:condition}
@@ -88,32 +106,26 @@ snippet until
 		${0}
 	end
 snippet cla class .. end
-	class ${0:`substitute(vim_snippets#Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`}
-		${1}
-	end${2}
-snippet cla class .. initialize .. end
+	class ${1:`substitute(vim_snippets#Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`}
+		${0}
+	end
+snippet clai class .. initialize .. end
 	class ${1:`substitute(vim_snippets#Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`}
 		def initialize(${2:args})
 			${0}
 		end
 	end
-snippet cla class .. < ParentClass .. initialize .. end
+snippet cla< class .. < ParentClass .. initialize .. end
 	class ${1:`substitute(vim_snippets#Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`} < ${2:ParentClass}
 		def initialize(${3:args})
 			${0}
 		end
 	end
-snippet cla ClassName = Struct .. do .. end
-	${1:`substitute(vim_snippets#Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`} = Struct.new(:${2:attr_names}) do
-		def ${3:method_name}
-			${0}
-		end
-	end
-snippet cla class BlankSlate .. initialize .. end
+snippet blankslate class BlankSlate .. initialize .. end
 	class ${0:BlankSlate}
 		instance_methods.each { |meth| undef_method(meth) unless meth =~ /\A__/ }
 	end
-snippet cla class << self .. end
+snippet claself class << self .. end
 	class << ${1:self}
 		${0}
 	end
@@ -128,12 +140,6 @@ snippet cla-
 	end
 snippet mod module .. end
 	module ${1:`substitute(vim_snippets#Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`}
-		${0}
-	end
-snippet mod module .. module_function .. end
-	module ${1:`substitute(vim_snippets#Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`}
-		module_function
-
 		${0}
 	end
 snippet mod module .. ClassMethods .. end
@@ -192,7 +198,7 @@ snippet defs
 		${0}
 	end
 # def initialize
-snippet defi
+snippet definit
 	def initialize(${1:args})
 		${0}
 	end
@@ -587,8 +593,6 @@ snippet begin
 	end
 
 #debugging
-snippet deb
-	debugger
 snippet debug
 	require 'byebug'; byebug
 snippet debug19
@@ -713,7 +717,15 @@ snippet is
 	it { should ${0} }
 snippet isn
 	it { should_not ${0} }
-snippet kai
-	class ${0:Kai}
-		${1:}
+snippet iexp
+	it { expect(${1:object}).${1} ${0} }
+snippet iexpb
+	it { expect { ${1:object} }.${1} ${0} }
+snippet iiexp
+	it { is_expected.to ${0} }
+snippet iiexpn
+	it { is_expected.not_to ${0} }
+snippet agg
+	aggregate_failures '${1:message}' do
+		${0}
 	end

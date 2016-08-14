@@ -1,3 +1,16 @@
+snippet pry
+	- binding.pry
+snippet renp
+	= render partial: '${0}'
+# Forms
+# =====
+snippet fieldset
+	fieldset
+		legend ${1}
+snippet css
+	link rel="stylesheet" href="${1:style.css}" type="text/css" media="${2:all}"
+snippet script
+	script src="${1:script.js}" type="text/javascript"
 # Some useful Unicode entities
 # ============================
 # Non-Breaking Space
@@ -48,26 +61,3 @@ snippet backspace
 # ⎋
 snippet esc
 	&#x238B;
-
-# Forms
-# =====
-snippet form
-	= form_for @${1:article} do |f|
-		${0}
-snippet fg
-	.form-group
-snippet fl
-	= f.label :${1:title}, class: "control-label"
-snippet ft
-	= f.text_field :${1:title}, class: "form-control"
-snippet fieldset
-	fieldset
-		legend ${1}
-
-# Assets
-# ======
-snippet css
-	link rel="stylesheet" href="${1:style.css}" type="text/css" media="${2:all}"
-
-snippet script
-	script src="${1:script.js}" type="text/javascript"
