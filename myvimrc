@@ -639,16 +639,21 @@ nnoremap <leader>wtf oputs "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
 
 """""""
 "test
+"test-vim
 """""""
 let test#strategy = "vimux"
 let g:VimuxRunnerType = "window"
 " let VimuxUseNearest = 1
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
+" nmap <silent> <leader>t :TestNearest<CR>
+" nmap <silent> <leader>T :TestFile<CR>
 " nmap <silent> <leader>a :TestSuite<CR>
 " nmap <silent> <leader>l :TestLast<CR>
 " nmap <silent> <leader>g :TestVisit<CR>
 
+nnoremap <leader>ta :TestSuite<cr>
+nnoremap <leader>tf :TestFile<cr>
+nnoremap <leader>tn :TestNearest<cr>
+nnoremap <leader>tt :TestLast<cr>
 
 
 """"""""""""""""""""""""""""""""
