@@ -32,3 +32,12 @@ snippet ff
 
 		<%= submit "Submit" %>
 	<% end %>
+
+snippet fti
+	<%= text_input f, ${1}, class: "${2:form-control}" %>
+snippet fpi
+	<%= password_input f, ${1:password}, class: "${2:form-control}" %>
+snippet fs
+	<%=	submit "${1:Submit}", class: "${2:form-control}"
+snippet et
+	<%= error_tag f, :${1} %>
