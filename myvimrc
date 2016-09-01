@@ -342,7 +342,7 @@ set softtabstop=2
 "   set statusline to show the decode infomation
 "   see h statusline
 " origin
-" set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 " add tag name
 " set statusline=%<%f\ %h%m%r%([%{Tlist_Get_Tagname_By_Line()}]%)%=\ %k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 
