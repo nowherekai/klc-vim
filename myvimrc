@@ -155,9 +155,6 @@ set showmatch
 "自动对齐
 set autoindent
 
- " set different indent level for other languages
-autocmd FileType c setlocal shiftwidth=4 tabstop=4
-autocmd FileType cpp setlocal shiftwidth=4 tabstop=4
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -686,3 +683,10 @@ while c <= 'z'
   let c = nr2char(1+char2nr(c))
 endw
 let g:AutoPairsShortcutFastWrap = "Å"
+
+ " set different indent level for other languages
+autocmd FileType c setlocal shiftwidth=4 tabstop=4
+autocmd FileType cpp setlocal shiftwidth=4 tabstop=4
+" autocmd FileType go setlocal shiftwidth=4 tabstop=4
+" autocmd FileType go setlocal  list!
+" autocmd FileType go setlocal expandtab!
