@@ -357,6 +357,7 @@ autocmd FileType scss setlocal iskeyword=@,48-57,_,192-255,-,$
 autocmd FileType less setlocal iskeyword=@,48-57,_,192-255,-,$
 autocmd FileType html setlocal iskeyword=@,48-57,_,192-255,-,$
 autocmd FileType slim setlocal iskeyword=@,48-57,_,192-255,-,$
+autocmd FileType haml setlocal iskeyword=@,48-57,_,192-255,-,$
 autocmd FileType javascript setlocal iskeyword=@,48-57,_,192-255,-,$
 autocmd FileType lisp setlocal iskeyword=33,36,38,42,43,45,47-58,60-62,63,64-90,97-122,_
 
