@@ -97,8 +97,8 @@ endtry
 " molokai color scheme
 set background=dark
 let g:molokai_original = 1
-" colorscheme molokai
-colorscheme dracula
+colorscheme molokai
+" colorscheme dracula
 
 
 
