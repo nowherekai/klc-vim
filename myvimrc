@@ -269,7 +269,7 @@ nnoremap <silent> <leader><space>     :call ReplaceTableWithSpaceAndRemoveTraili
 " => Ack searching and cope displaying
 " "    requires ack.vim - it's much better than vimgrep/grep
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap ,g :Ack <cword><CR>
+nnoremap ,g :Ag <cword><CR>
 
 """""""""""""""""""
 " => serach word in dash
@@ -465,6 +465,7 @@ set list
 
 " set listchars=tab:▸\ ,eol:c,trail:+
 set listchars=tab:▸\ ,trail:+
+autocmd FileType c set list!
 " set listchars=trail:+
 
 " slime of lisp
@@ -693,3 +694,4 @@ autocmd FileType cpp setlocal shiftwidth=4 tabstop=4
 " autocmd FileType go setlocal shiftwidth=4 tabstop=4
 " autocmd FileType go setlocal  list!
 " autocmd FileType go setlocal expandtab!
+set runtimepath^=~/.vim/bundle/ag
